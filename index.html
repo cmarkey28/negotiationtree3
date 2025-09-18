@@ -18,12 +18,7 @@
     summary{padding:14px 16px;font-weight:700;cursor:pointer;color:var(--ink)}
     .sect{padding:0 16px 16px}
     .badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:#e8f4fd;color:#1667b1;margin-left:8px}
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .row>div{background:#f3f7fb;border-radius:10px;padding:10px}
-    .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-    .agent{font-weight:600}
-    .borrower{font-style:italic}
-    .note{font-size:13px;color:var(--muted)}
+    .row{display:grid;grid-template-columns:1fr;gap:12px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
     input{width:100%;padding:10px;border-radius:10px;border:1px solid #d9e3ec;background:#fff;font:inherit}
     .btn{appearance:none;border:0;border-radius:10px;padding:10px 14px;font-weight:700;background:var(--accent);color:#fff;cursor:pointer}
@@ -36,6 +31,9 @@
     .coach li{font-size:18px;line-height:1.4;margin:8px 0}
     .simple-steps{margin:10px 0 0 18px}
     .simple-steps li{margin:6px 0}
+    .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .section-banner{background:#1f8fe5;color:#fff;padding:12px 16px;border-radius:var(--radius);font-size:18px;font-weight:600;margin:20px 0 0}
+    .center-buttons{display:flex;justify-content:center;gap:10px;margin-top:12px}
   </style>
 </head>
 <body>
@@ -47,14 +45,13 @@
       <ol class="simple-steps">
         <li>Enter <strong>Days Past Due</strong> and dollar amounts in <em>Quick Fill</em>.</li>
         <li>Click <strong>Apply</strong> to insert those values into the script below.</li>
-        <li>Open each step and read the <strong>Agent</strong> lines as written. Choose the sub‑branch that matches the borrower’s reply.</li>
-        <li>Once you have a commitment, schedule the payment and document the plan.</li>
+        <li>Use <strong>Reset</strong> anytime to clear the fields and start over.</li>
+        <li>Follow the steps to practice a realistic borrower conversation.</li>
       </ol>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- Quick Fill Panel -->
     <div class="card">
       <div class="row">
         <div>
@@ -69,17 +66,7 @@
             <label>Follow‑up Day<input id="v-day" type="text" placeholder="e.g., within 10 days / 15th" /></label>
             <label>Agent Name (optional)<input id="v-agent" type="text" placeholder="e.g., Alex" /></label>
           </div>
-        </div>
-        <div>
-          <div class="label">Apply values</div>
-          <p><strong>How to use this call flow:</strong></p>
-          <ol class="simple-steps">
-            <li>Fill in the fields on the left.</li>
-            <li>Click <strong>Apply</strong>. The values you enter will automatically appear throughout the script below.</li>
-            <li>Use <strong>Reset</strong> anytime to clear the fields and start over.</li>
-            <li>Follow the steps to practice a realistic borrower conversation.</li>
-          </ol>
-          <div style="margin-top:10px;display:flex;gap:8px">
+          <div class="center-buttons">
             <button class="btn" id="apply">Apply</button>
             <button class="btn secondary" id="reset">Reset</button>
           </div>
@@ -87,11 +74,11 @@
       </div>
     </div>
 
-    <!-- STEP 1: Open & State Facts (Unwilling Borrower) -->
+    <div class="section-banner">Account Review</div>
     <details open>
-      <summary>1) Open, confirm facts, propose resolution <span class="badge">Start here</span></summary>
+      <summary>Open, confirm facts, propose resolution <span class="badge">Start here</span></summary>
       <div class="sect">
-        <div class="agent">"I see here that you are <span data-token="DPD">35</span> days past due and have a total amount due of $<span data-token="TOTAL">815</span>. Let’s set that up today to resolve your past‑due balance."</div>
+        <div class="agent">"I see here that you are <span data-token='DPD'>35</span> days past due and have a total amount due of $<span data-token='TOTAL'>815</span>. Let’s set that up today to resolve your past-due balance."</div>
         <details>
           <summary>Borrower: “I can’t pay that today. I’ve said it a few times—I’m out of work.”</summary>
           <div class="sect">
@@ -99,11 +86,11 @@
             <details>
               <summary>Borrower: “Thanks, but I don’t have anything to give you.”</summary>
               <div class="sect">
-                <div class="agent">"I get it—I've worked with many customers in similar situations and been able to help. I’m looking at your account and I show a partial payment of $<span data-token="FIRST">400</span> owed. If you could pay that, it would reduce your balance and your days past due."</div>
+                <div class="agent">"I get it—I've worked with many customers in similar situations and been able to help. I’m looking at your account and I show a partial payment of $<span data-token='FIRST'>400</span> owed. If you could pay that, it would reduce your balance and your days past due."</div>
                 <details>
                   <summary>Borrower: “I just told you—I can’t do anything.”</summary>
                   <div class="sect">
-                    <div class="agent">"I hear you. One thing I want to share is that your account is at <span data-token="DPD">35</span> days past due and credit reporting has begun. A late fee was assessed and a second one will be assessed in 10 days. Each day this continues, additional interest accrues."</div>
+                    <div class="agent">"I hear you. One thing I want to share is that your account is at <span data-token='DPD'>35</span> days past due and credit reporting has begun. A late fee was assessed and a second one will be assessed in 10 days. Each day this continues, additional interest accrues."</div>
                     <details>
                       <summary>Borrower: “I still don’t see anything I can do between now and then.”</summary>
                       <div class="sect">
@@ -123,15 +110,15 @@
                                     <details>
                                       <summary>Borrower: “I can’t come up with that amount.”</summary>
                                       <div class="sect">
-                                        <div class="agent">"Understood. Here’s a path forward that avoids another late fee and reduces risk. You can pay $<span data-token="FIRST">400</span> within the next 10 days. That will also cover your oldest past‑due balance and help keep the loan from rolling into later stages of delinquency where repossession activity may begin."</div>
+                                        <div class="agent">"Understood. Here’s a path forward that avoids another late fee and reduces risk. You can pay $<span data-token='FIRST'>400</span> within the next 10 days. That will also cover your oldest past-due balance and help keep the loan from rolling into later stages of delinquency where repossession activity may begin."</div>
                                         <details>
                                           <summary>Borrower: “Thanks, but I’ll need a miracle.”</summary>
                                           <div class="sect">
-                                            <div class="agent">"I’ve seen lots of borrowers work through this. If you can get the $<span data-token="FIRST">400</span>, that gives you time to find a new job and then we can work toward a longer‑term plan to get you current."</div>
+                                            <div class="agent">"I’ve seen lots of borrowers work through this. If you can get the $<span data-token='FIRST'>400</span>, that gives you time to find a new job and then we can work toward a longer-term plan to get you current."</div>
                                             <details>
                                               <summary>Borrower: “Okay. I’ll see what I can do.”</summary>
                                               <div class="sect">
-                                                <div class="callout ok"><strong>Agent Action:</strong> "Let’s pencil that in now to hold your spot—$<span data-token="FIRST">400</span> on <span data-token="DAY">the 15th</span>. We’ll confirm funds and I’ll send a receipt." Proceed to commitment and scheduling.</div>
+                                                <div class="callout ok"><strong>Agent Action:</strong> "Let’s pencil that in now to hold your spot—$<span data-token='FIRST'>400</span> on <span data-token='DAY'>the 15th</span>. We’ll confirm funds and I’ll send a receipt." Proceed to commitment and scheduling.</div>
                                               </div>
                                             </details>
                                           </div>
@@ -155,9 +142,9 @@
       </div>
     </details>
 
-    <!-- STEP 2: Secure Commitment & Schedule -->
+    <div class="section-banner">Negotiation</div>
     <details>
-      <summary>2) Secure commitment and schedule</summary>
+      <summary>Secure commitment and schedule</summary>
       <div class="sect">
         <div class="callout ok"><strong>Agent Action:</strong> "To move forward with scheduling your payment, I just need to confirm—are the funds available in your bank account today?" Schedule via ACH (or debit card where eligible). Confirm date, amount, and receipt.</div>
         <div class="callout warn"><strong>Remember:</strong> Stay empathetic; mirror language, summarize the plan, and document notes clearly.</div>
@@ -192,11 +179,18 @@
         return v!=='' ? v : fallback;
       }
       function apply(){
-        const dpd = getVal('v-dpd','35');
-        const total = getVal('v-total','815');
-        const first = getVal('v-first','400');
-        const remain = getVal('v-remaining','415');
+        const dpdInput = document.getElementById('v-dpd');
+        const total = parseFloat(getVal('v-total','815'));
+        const first = parseFloat(getVal('v-first','400'));
+        const remain = parseFloat(getVal('v-remaining','415'));
         const day = getVal('v-day','within 10 days');
+
+        let dpd = parseInt(getVal('v-dpd','35'));
+        if (!isNaN(total) && !isNaN(first) && total === first) {
+          dpd = 0;
+          if (dpdInput) dpdInput.value = 0;
+        }
+
         map.DPD.forEach(el=>el.textContent = dpd);
         map.TOTAL.forEach(el=>el.textContent = total);
         map.FIRST.forEach(el=>el.textContent = first);
