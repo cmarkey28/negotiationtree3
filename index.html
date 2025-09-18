@@ -1,154 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Negotiation Tree: 90+ Days Past Due</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Lato&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unwilling Borrower • 60 or Fewer Days Past Due • Call Flow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Lato:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Lato', sans-serif;
-      line-height: 1.5;
-      padding: 20px;
-      background-color: #f9f9f9;
-    }
-    h1 {
-      font-family: 'Montserrat', sans-serif;
-      color: #2c3e50;
-    }
-    details {
-      margin-bottom: 12px;
-      border-left: 4px solid #3498db;
-      padding-left: 10px;
-      background: #fff;
-      padding: 10px;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    summary {
-      font-weight: bold;
-      cursor: pointer;
-      color: #2980b9;
-    }
-    .response, .action {
-      margin-left: 20px;
-      color: #2c3e50;
-      font-weight: 500;
-    }
-    .option {
-      margin-left: 40px;
-      font-style: italic;
-      color: #7f8c8d;
-    }
-    .label {
-      font-weight: bold;
-      color: #8e44ad;
-      margin-top: 8px;
-      display: block;
-    }
-    .instructions {
-      margin-bottom: 20px;
-      padding: 15px;
-      background-color: #e8f4fd;
-      border-left: 5px solid #3498db;
-      border-radius: 6px;
-    }
-    .footer-blurb {
-      margin-top: 40px;
-      padding: 15px;
-      background-color: #fef8e7;
-      border-left: 5px solid #f39c12;
-      border-radius: 6px;
-      font-style: italic;
-    }
+    :root{ --ink:#23303a; --muted:#5e6b76; --accent:#1f8fe5; --bg:#f7f9fb; --card:#ffffff; --ok:#2ecc71; --warn:#f39c12; --radius:12px; --shadow:0 6px 18px rgba(0,0,0,.06) }
+    *{box-sizing:border-box}
+    body{font-family:'Lato',sans-serif;line-height:1.55;margin:0;background:var(--bg);color:var(--ink)}
+    header{padding:28px 20px 8px}
+    h1{font-family:'Montserrat',sans-serif;margin:0 0 10px;font-size:24px;color:var(--ink)}
+    .wrap{max-width:980px;margin:0 auto;padding:0 20px 44px}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin:14px 0}
+    .instructions{background:#eaf5ff;border-left:6px solid var(--accent)}
+    details{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);margin:12px 0;overflow:hidden}
+    summary{padding:14px 16px;font-weight:700;cursor:pointer;color:var(--ink)}
+    .sect{padding:0 16px 16px}
+    .badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:#e8f4fd;color:#1667b1;margin-left:8px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .row>div{background:#f3f7fb;border-radius:10px;padding:10px}
+    .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .agent{font-weight:600}
+    .borrower{font-style:italic}
+    .note{font-size:13px;color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    input{width:100%;padding:10px;border-radius:10px;border:1px solid #d9e3ec;background:#fff;font:inherit}
+    .btn{appearance:none;border:0;border-radius:10px;padding:10px 14px;font-weight:700;background:var(--accent);color:#fff;cursor:pointer}
+    .btn.secondary{background:#e9eff7;color:#1b3b55}
+    .callout{border-left:5px solid var(--accent);background:#eaf5ff;padding:12px 14px;border-radius:10px;margin:10px 0}
+    .warn{border-left:5px solid var(--warn);background:#fff6e6}
+    .ok{border-left:5px solid var(--ok);background:#eafaf0}
+    .coach{border-left:8px solid var(--accent);padding:22px}
+    .coach h2{font-family:'Montserrat',sans-serif;font-size:22px;margin:0 0 8px;color:var(--ink)}
+    .coach li{font-size:18px;line-height:1.4;margin:8px 0}
+    .simple-steps{margin:10px 0 0 18px}
+    .simple-steps li{margin:6px 0}
   </style>
 </head>
 <body>
-  <h1>🧭 Negotiation Adventure Tree: 90+ Days Past Due</h1>
+  <header class="wrap">
+    <h1>🧭 Unwilling Borrower – 60 or Fewer Days Past Due</h1>
+    <div class="card instructions">
+      <p>This mock auto collections call flow involves an unwilling borrower who is 60 or fewer days past due. Use the interactive fields to simulate a realistic conversation and practice de‑escalation while moving toward a concrete action.</p>
+      <p><strong>How to use this call flow:</strong></p>
+      <ol class="simple-steps">
+        <li>Enter <strong>Days Past Due</strong> and dollar amounts in <em>Quick Fill</em>.</li>
+        <li>Click <strong>Apply</strong> to insert those values into the script below.</li>
+        <li>Open each step and read the <strong>Agent</strong> lines as written. Choose the sub‑branch that matches the borrower’s reply.</li>
+        <li>Once you have a commitment, schedule the payment and document the plan.</li>
+      </ol>
+    </div>
+  </header>
 
-  <div class="instructions">
-    <strong>How to Use This Tree:</strong><br>
-    This interactive tool guides agents through escalated borrower conversations. Begin with the Full Past Due offer and follow the nested branches that reflect borrower responses.
-  </div>
+  <main class="wrap">
+    <!-- Quick Fill Panel -->
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="label">Quick Fill</div>
+          <div class="grid-3" style="margin-top:8px">
+            <label>Days Past Due<input id="v-dpd" type="number" min="0" placeholder="e.g., 35" /></label>
+            <label>Total Due ($)<input id="v-total" type="number" min="0" step="0.01" placeholder="e.g., 815" /></label>
+            <label>Partial Payment Today ($)<input id="v-first" type="number" min="0" step="0.01" placeholder="e.g., 400" /></label>
+          </div>
+          <div class="grid-3" style="margin-top:8px">
+            <label>Remaining Past Due ($)<input id="v-remaining" type="number" min="0" step="0.01" placeholder="e.g., 415" /></label>
+            <label>Follow‑up Day<input id="v-day" type="text" placeholder="e.g., within 10 days / 15th" /></label>
+            <label>Agent Name (optional)<input id="v-agent" type="text" placeholder="e.g., Alex" /></label>
+          </div>
+        </div>
+        <div>
+          <div class="label">Apply values</div>
+          <p><strong>How to use this call flow:</strong></p>
+          <ol class="simple-steps">
+            <li>Fill in the fields on the left.</li>
+            <li>Click <strong>Apply</strong>. The values you enter will automatically appear throughout the script below.</li>
+            <li>Use <strong>Reset</strong> anytime to clear the fields and start over.</li>
+            <li>Follow the steps to practice a realistic borrower conversation.</li>
+          </ol>
+          <div style="margin-top:10px;display:flex;gap:8px">
+            <button class="btn" id="apply">Apply</button>
+            <button class="btn secondary" id="reset">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <details>
-    <summary>🚀 Offer: Full Past Due Payment</summary>
-    <span class="label">Agent Response:</span>
-    <div class="response">"At this point, your loan is more than 90 days past due and has been assigned for repossession. However, because the vehicle hasn’t been secured yet, you still have time to resolve the delinquency. The full past due amount to bring the loan current is $[amount]. Are you able to make that payment today?"</div>
-    <span class="label">Agent Action:</span>
-    <div class="action">If borrower agrees, proceed to schedule payment. If not, proceed to rebuttals.</div>
-
-    <details>
-      <summary>💬 Borrower: "That’s too much. I can’t do all of that today."</summary>
-      <span class="label">Rebuttal Option 1:</span>
-      <div class="option">"I understand that’s a large amount. If the full cure isn’t feasible, we can discuss alternative payments that may delay or stop repossession. Please be aware that your vehicle is currently out for repossession and it may be picked up at any point."</div>
-      <span class="label">Rebuttal Option 2:</span>
-      <div class="option">"Paying the full past due balance immediately is the most secure way to cancel the repossession order. But let’s explore if there are other meaningful payment options still available."</div>
-      <span class="label">Rebuttal Option 3:</span>
-      <div class="option">"Unfortunately, time is critical here. Once the vehicle is secured, payment options become more limited. Acting now gives you the best chance to retain your vehicle."</div>
-
-      <details>
-        <summary>🔁 Borrower Declines → Payment to Reduce Delinquency Under 60 Days</summary>
-        <span class="label">Agent Response:</span>
-        <div class="response">"Your loan is over 90 days past due, and your vehicle has been assigned for repossession. However, it has not yet been secured. You still have a chance to stop the repossession by making a payment that reduces your delinquency to under 60 days past due. That amount today is $[amount]. If you make that payment now, you will also avoid the $450 repossession fee."</div>
-        <span class="label">Agent Action:</span>
-        <div class="action">If borrower agrees, schedule payment. If not, continue to rebuttals.</div>
-
+    <!-- STEP 1: Open & State Facts (Unwilling Borrower) -->
+    <details open>
+      <summary>1) Open, confirm facts, propose resolution <span class="badge">Start here</span></summary>
+      <div class="sect">
+        <div class="agent">"I see here that you are <span data-token="DPD">35</span> days past due and have a total amount due of $<span data-token="TOTAL">815</span>. Let’s set that up today to resolve your past‑due balance."</div>
         <details>
-          <summary>💬 Borrower: "I can only do part of the minimum."</summary>
-          <span class="label">Rebuttal Option 1:</span>
-          <div class="option">"I understand. The sooner you’re able to reach that threshold, the better. Once the vehicle is secured, the fee is unavoidable. Can we explore what you can afford today and build from there?"</div>
-          <span class="label">Rebuttal Option 2:</span>
-          <div class="option">"Unfortunately, partial payments that don’t reduce your delinquency below 60 days won’t stop the repossession. This policy is in place to protect both you and your vehicle."</div>
-          <span class="label">Rebuttal Option 3:</span>
-          <div class="option">"At this stage, we can only cancel a repossession order if the delinquency is reduced to under 60 days. From there, we will need to develop a plan to reduce the remaining past due balance to avoid future repossession eligibility."</div>
-
-          <details>
-            <summary>🔁 Borrower Declines → Stabilization Payment</summary>
-            <span class="label">Agent Response:</span>
-            <div class="response">"While a smaller payment today won’t cancel the repossession, it can still demonstrate effort and reduce the total balance. Can I ask what amount you’d be able to pay today toward the past due?"</div>
-            <span class="label">Agent Action:</span>
-            <div class="action">If borrower agrees, schedule payment. If not, continue to rebuttals.</div>
-
+          <summary>Borrower: “I can’t pay that today. I’ve said it a few times—I’m out of work.”</summary>
+          <div class="sect">
+            <div class="agent">"I understand, and my goal is to provide the best plan to get your account back to current."</div>
             <details>
-              <summary>💬 Borrower: "I can do something small, but it won’t make a dent."</summary>
-              <span class="label">Rebuttal Option 1:</span>
-              <div class="option">"Making a partial payment now lowers your total balance and could help you reinstate the loan more easily if the vehicle is repossessed."</div>
-              <span class="label">Rebuttal Option 2:</span>
-              <div class="option">"If the vehicle hasn’t been secured by then, you may still avoid the $450 fee—but it’s a risk. Setting up a payment now helps lock in that benefit."</div>
-              <span class="label">Rebuttal Option 3:</span>
-              <div class="option">"Unfortunately, only a payment that brings you under 60 days past due can stop the repossession. But any payment helps reduce the impact."</div>
-
-              <details>
-                <summary>🔁 Borrower Declines → Hardship/Settlement</summary>
-                <span class="label">Agent Response:</span>
-                <div class="response">"We do have hardship relief programs. Would you like to hear about these options?"</div>
-                <span class="label">Agent Action:</span>
-                <div class="action">Ask probing questions: “How are you handling your other bills?” “What has changed since your last payment?” Assist borrower or transfer to hardship/settlement support.</div>
-
+              <summary>Borrower: “Thanks, but I don’t have anything to give you.”</summary>
+              <div class="sect">
+                <div class="agent">"I get it—I've worked with many customers in similar situations and been able to help. I’m looking at your account and I show a partial payment of $<span data-token="FIRST">400</span> owed. If you could pay that, it would reduce your balance and your days past due."</div>
                 <details>
-                  <summary>💬 Borrower: "I can’t pay anything right now."</summary>
-                  <span class="label">Rebuttal Option 1:</span>
-                  <div class="option">"I hear you. If no payment is received, your account may enter repo assignment shortly after day 72. We still have time to flag your account for hardship review if we act today."</div>
-                  <span class="label">Rebuttal Option 2:</span>
-                  <div class="option">"At this point, the only way to keep your vehicle from being assigned for recovery is either payment or hardship. We're in the critical window before vendor assignment. By starting hardship today, we’re at least showing Upstart that action is in progress."</div>
+                  <summary>Borrower: “I just told you—I can’t do anything.”</summary>
+                  <div class="sect">
+                    <div class="agent">"I hear you. One thing I want to share is that your account is at <span data-token="DPD">35</span> days past due and credit reporting has begun. A late fee was assessed and a second one will be assessed in 10 days. Each day this continues, additional interest accrues."</div>
+                    <details>
+                      <summary>Borrower: “I still don’t see anything I can do between now and then.”</summary>
+                      <div class="sect">
+                        <div class="agent">"I really want to avoid that for you. To understand your situation, are you receiving unemployment?"</div>
+                        <details>
+                          <summary>Borrower: “Yes, but it’s $300 a week—I can barely get by.”</summary>
+                          <div class="sect">
+                            <div class="agent">"I understand this is very difficult. Do you have any other income in the household?"</div>
+                            <details>
+                              <summary>Borrower: “No, it’s just me.”</summary>
+                              <div class="sect">
+                                <div class="agent">"Okay—let me see if you qualify for a hardship or a settlement review."</div>
+                                <details>
+                                  <summary>Borrower: “That’s great.”</summary>
+                                  <div class="sect">
+                                    <div class="agent">"It looks like hardship does not apply, but we can look at a settlement of <em>XXXX</em>."</div>
+                                    <details>
+                                      <summary>Borrower: “I can’t come up with that amount.”</summary>
+                                      <div class="sect">
+                                        <div class="agent">"Understood. Here’s a path forward that avoids another late fee and reduces risk. You can pay $<span data-token="FIRST">400</span> within the next 10 days. That will also cover your oldest past‑due balance and help keep the loan from rolling into later stages of delinquency where repossession activity may begin."</div>
+                                        <details>
+                                          <summary>Borrower: “Thanks, but I’ll need a miracle.”</summary>
+                                          <div class="sect">
+                                            <div class="agent">"I’ve seen lots of borrowers work through this. If you can get the $<span data-token="FIRST">400</span>, that gives you time to find a new job and then we can work toward a longer‑term plan to get you current."</div>
+                                            <details>
+                                              <summary>Borrower: “Okay. I’ll see what I can do.”</summary>
+                                              <div class="sect">
+                                                <div class="callout ok"><strong>Agent Action:</strong> "Let’s pencil that in now to hold your spot—$<span data-token="FIRST">400</span> on <span data-token="DAY">the 15th</span>. We’ll confirm funds and I’ll send a receipt." Proceed to commitment and scheduling.</div>
+                                              </div>
+                                            </details>
+                                          </div>
+                                        </details>
+                                      </div>
+                                    </details>
+                                  </div>
+                                </details>
+                              </div>
+                            </details>
+                          </div>
+                        </details>
+                      </div>
+                    </details>
+                  </div>
                 </details>
-              </details>
+              </div>
             </details>
-          </details>
+          </div>
         </details>
-      </details>
+      </div>
     </details>
-  </details>
 
-  <details>
-    <summary>✅ Commitment from the Borrower</summary>
-    <span class="label">Agent Action:</span>
-    <div class="response">If borrower agrees to pay, proceed to schedule payment over the phone using a check or debit card. Confirm: “To move forward with scheduling your payment, I just need to confirm—are the funds available in your bank account today?”</div>
-  </details>
+    <!-- STEP 2: Secure Commitment & Schedule -->
+    <details>
+      <summary>2) Secure commitment and schedule</summary>
+      <div class="sect">
+        <div class="callout ok"><strong>Agent Action:</strong> "To move forward with scheduling your payment, I just need to confirm—are the funds available in your bank account today?" Schedule via ACH (or debit card where eligible). Confirm date, amount, and receipt.</div>
+        <div class="callout warn"><strong>Remember:</strong> Stay empathetic; mirror language, summarize the plan, and document notes clearly.</div>
+      </div>
+    </details>
 
-  <div class="footer-blurb">
-    💬 <strong>Reminder for Agents:</strong><br>
-    Ask open-ended questions to uncover borrower challenges and convey empathy. Any effort—even small—can shift the path away from repossession.
-  </div>
+    <footer class="wrap">
+      <div class="card coach">
+        <h2>Coaching Tips</h2>
+        <ul>
+          <li>De‑escalate early: acknowledge frustration before offering options.</li>
+          <li>Anchor to a small, specific action (for example, $400 within 10 days) and a concrete date.</li>
+          <li>Avoid debate; pivot to facts (fees, interest, timeline) and next steps.</li>
+        </ul>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    (function(){
+      const map = {
+        DPD: document.querySelectorAll('[data-token="DPD"]'),
+        TOTAL: document.querySelectorAll('[data-token="TOTAL"]'),
+        FIRST: document.querySelectorAll('[data-token="FIRST"]'),
+        REMAIN: document.querySelectorAll('[data-token="REMAIN"]'),
+        DAY: document.querySelectorAll('[data-token="DAY"]')
+      };
+      function getVal(id, fallback){
+        const node = document.getElementById(id);
+        if(!node) return fallback;
+        const v = (node.value||'').trim();
+        return v!=='' ? v : fallback;
+      }
+      function apply(){
+        const dpd = getVal('v-dpd','35');
+        const total = getVal('v-total','815');
+        const first = getVal('v-first','400');
+        const remain = getVal('v-remaining','415');
+        const day = getVal('v-day','within 10 days');
+        map.DPD.forEach(el=>el.textContent = dpd);
+        map.TOTAL.forEach(el=>el.textContent = total);
+        map.FIRST.forEach(el=>el.textContent = first);
+        map.REMAIN.forEach(el=>el.textContent = remain);
+        map.DAY.forEach(el=>el.textContent = day);
+      }
+      const applyBtn = document.getElementById('apply');
+      const resetBtn = document.getElementById('reset');
+      if(applyBtn) applyBtn.addEventListener('click', apply);
+      if(resetBtn) resetBtn.addEventListener('click', function(){
+        ['v-dpd','v-total','v-first','v-remaining','v-day','v-agent'].forEach(function(id){
+          const n = document.getElementById(id); if(n) n.value='';
+        });
+        apply();
+      });
+      apply();
+    })();
+  </script>
 </body>
 </html>
